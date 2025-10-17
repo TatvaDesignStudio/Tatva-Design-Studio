@@ -250,20 +250,26 @@ a{color:inherit; text-decoration:none}
 /* ===== Responsive Header & Nav ===== */
 
 /* Default (Desktop) */
-/* .site-header {
+.site-header {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-} */
+  max-width: 1200px; /* optional, keeps content centered on large screens */
+  margin: 0 auto; /* centers header horizontally */
+  box-sizing: border-box;
+}
 
 /* Tablet and below */
 @media (max-width: 768px) {
   .site-header {
     flex-direction: column;
     align-items: center;
-    padding: 10px 10px;
+    padding: 10px 10px; /* small horizontal padding */
     width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .logo-container {
@@ -280,9 +286,9 @@ a{color:inherit; text-decoration:none}
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
   }
 
   .navbar ul li a {
@@ -292,7 +298,7 @@ a{color:inherit; text-decoration:none}
   }
 
   .logo {
-    height: 50px; /* smaller on mobile */
+    height: 50px;
   }
 
   .brand-text h1 {
@@ -304,8 +310,12 @@ a{color:inherit; text-decoration:none}
   }
 }
 
-/* Very small screens (like 400px or less) */
+/* Very small screens */
 @media (max-width: 420px) {
+  .site-header {
+    padding: 8px 10px;
+  }
+
   .navbar ul li a {
     padding: 6px 8px;
     font-size: 13px;
@@ -314,20 +324,13 @@ a{color:inherit; text-decoration:none}
   .logo {
     height: 45px;
   }
-
-  .site-header {
-    padding: 8px 10px;
-  }
 }
 
+/* Adjust body top padding on small screens */
 @media (max-width: 640px) {
   body {
-    padding-top: 130px; /* ⬆ add more space below header */
-    padding-left: 10px; /* new: slight left shift */
-    padding-right: 10px; /* optional: keep symmetric */
-  }
-
-  .site-header {
-    padding: 10px 10px;
+    padding-top: 130px; 
+    padding-left: 10px; /* small left shift */
+    padding-right: 10px;
   }
 }
