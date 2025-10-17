@@ -275,6 +275,17 @@ iframe {
   }
 }
 
+@media (max-width: 640px) {
+  body {
+    padding-top: 130px; /* ⬆ add more space below header */
+  }
+
+  .site-header {
+    padding: 10px 20px;
+  }
+}
+
+
 
 /* Responsive for Contact grid */
 #contact {
