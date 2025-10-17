@@ -256,7 +256,6 @@ a{color:inherit; text-decoration:none}
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  box-sizing: border-box;
 }
 
 /* Tablet and below */
@@ -293,6 +292,7 @@ a{color:inherit; text-decoration:none}
     display: inline-block;
     padding: 8px 10px;
     font-size: 14px;
+    
   }
 
   .logo {
