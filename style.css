@@ -256,8 +256,6 @@ a{color:inherit; text-decoration:none}
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  max-width: 1200px; /* optional, keeps content centered on large screens */
-  margin: 0 auto; /* centers header horizontally */
   box-sizing: border-box;
 }
 
