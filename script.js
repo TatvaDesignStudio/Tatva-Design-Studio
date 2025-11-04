@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Set footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// To highlight Active page
 document.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll(".navbar ul li a");
   const currentPath = window.location.pathname.split("/").pop(); // e.g., "architecture.html" or "index.html"
