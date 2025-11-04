@@ -118,7 +118,7 @@ section {
 
 /* Modal */
 #startProjectBtn{
-    color: rgb(164, 153, 153);
+    color: rgb(241, 240, 240);
 }
 
 .modal-content {
@@ -136,7 +136,8 @@ section {
 
 /* Links */
 a {
-  color: var(--gold);
+  color: var(--text);
+  font-weight: bold;
 }
 
 a:hover {
@@ -146,6 +147,6 @@ a:hover {
 /* Owner Card */
 .owner-card {
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 1px solid black;
   color: var(--text);
 }
