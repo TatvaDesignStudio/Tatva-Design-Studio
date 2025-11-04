@@ -133,15 +133,23 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window.scrollY < 100) {
         links.forEach(link => link.classList.remove("active"));
         document.querySelector('.navbar ul li a[href="index.html"]')?.classList.add("active");
+        document.querySelector('.navbar ul li a[href="./"]')?.classList.add("active");
+        document.querySelector('.navbar ul li a[href="/"]')?.classList.add("active");
       }
     }
 
     // 🔄 Run after load + resize + slight delay
     window.addEventListener("load", () => {
-      updateSections();
-      setTimeout(handleScroll, 300); // ensures layout ready
-    });
-    window.addEventListener("resize", updateSections);
-    window.addEventListener("scroll", handleScroll);
+    updateSections();
+    setTimeout(() => {
+      handleScroll(); // run once after load
+    }, 300); // ensures layout ready
+  });
+
+  // ✅ Also trigger once after DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    updateSections();
+    handleScroll();
+  });
   }
 });
