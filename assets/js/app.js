@@ -83,73 +83,71 @@ projectForm?.addEventListener("submit", async function (event) {
   }
 });
 
-// To highligh active section
-document.addEventListener("DOMContentLoaded", function () {
+
+// ===== Highlight active nav link on scroll (works with index.html as Home) =====
+document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".navbar ul li a");
-  const currentURL = window.location.href;
+  const offset = 150;
 
-  // Highlight current page (Architecture / Interior)
-  links.forEach(link => {
-    if (currentURL.includes(link.getAttribute("href")) && !link.getAttribute("href").startsWith("#")) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
-  });
-
-  // Scroll-based highlighting (only for Home page)
-  if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
-    let sections = [];
-    const offset = 150;
-
-    function updateSections() {
-      sections = Array.from(document.querySelectorAll("section[id]"));
-    }
-
-    function handleScroll() {
-      const scrollY = window.scrollY + offset;
-      let activeFound = false;
-
-      sections.forEach((sec, index) => {
-        const sectionTop = sec.offsetTop;
-        const sectionHeight = sec.offsetHeight;
-        const sectionId = sec.getAttribute("id");
-        const navLink = document.querySelector(`.navbar ul li a[href="#${sectionId}"]`);
-
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          links.forEach(link => link.classList.remove("active"));
-          navLink?.classList.add("active");
-          activeFound = true;
-        }
-
-        // ✅ Ensure Contact activates at very bottom
-        if (!activeFound && index === sections.length - 1 && scrollY > sectionTop) {
-          links.forEach(link => link.classList.remove("active"));
-          navLink?.classList.add("active");
-        }
-      });
-
-      // ✅ Highlight Home only near top
-      if (window.scrollY < 100) {
-        links.forEach(link => link.classList.remove("active"));
-        document.querySelector('.navbar ul li a[href="index.html"]')?.classList.add("active");
-        document.querySelector('.navbar ul li a[href="./"]')?.classList.add("active");
-        document.querySelector('.navbar ul li a[href="/"]')?.classList.add("active");
-      }
-    }
-
-    // 🔄 Run after load + resize + slight delay
-    window.addEventListener("load", () => {
-    updateSections();
-    setTimeout(() => {
-      handleScroll(); // run once after load
-    }, 300); // ensures layout ready
-  });
-
-  // ✅ Also trigger once after DOM is ready
-  document.addEventListener("DOMContentLoaded", () => {
-    updateSections();
-    handleScroll();
-  });
+  function clearActive() {
+    links.forEach(link => link.classList.remove("active"));
   }
+
+  function setActive(href) {
+    clearActive();
+    const activeLink = Array.from(links).find(link => {
+      const linkHref = link.getAttribute("href");
+      // Handle index.html, /index.html, or just index.html#...
+      return (
+        linkHref === href ||
+        linkHref.endsWith(href) ||
+        (href === "#home" && linkHref.includes("index.html"))
+      );
+    });
+    activeLink?.classList.add("active");
+  }
+
+  function handleScroll() {
+    const scrollY = window.scrollY + offset;
+    const sections = Array.from(document.querySelectorAll("section[id]"));
+    let activeFound = false;
+
+    sections.forEach((section, index) => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute("id");
+      const href = `#${id}`;
+
+      if (scrollY >= top && scrollY < top + height) {
+        setActive(href);
+        activeFound = true;
+      }
+
+      // ✅ Ensure Contact is active near bottom
+      if (!activeFound && index === sections.length - 1 && scrollY > top) {
+        setActive(href);
+        activeFound = true;
+      }
+    });
+
+    // ✅ Home when near top
+    if (!activeFound && window.scrollY < 150) {
+      setActive("index.html");
+    }
+  }
+
+  // ✅ Highlight for standalone pages (like architecture.html)
+  const currentPath = window.location.pathname.split("/").pop();
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href && href.endsWith(currentPath) && !href.startsWith("#")) {
+      link.classList.add("active");
+    }
+  });
+
+  // Run after DOM ready and small delay for mobile layout
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll);
+  window.addEventListener("load", () => setTimeout(handleScroll, 400));
+  handleScroll();
 });
