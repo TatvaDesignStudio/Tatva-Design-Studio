@@ -83,6 +83,7 @@ projectForm?.addEventListener("submit", async function (event) {
   }
 });
 
+// To highligh active section
 document.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll(".navbar ul li a");
   const currentURL = window.location.href;
@@ -96,12 +97,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Scroll-based highlighting (only for index.html)
+  // Scroll-based highlighting (only for Home page)
   if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
-    const sections = document.querySelectorAll("section[id]");
-    const offset = 150; // header offset
+    let sections = [];
+    const offset = 150;
 
-    window.addEventListener("scroll", () => {
+    function updateSections() {
+      sections = Array.from(document.querySelectorAll("section[id]"));
+    }
+
+    function handleScroll() {
       const scrollY = window.scrollY + offset;
       let activeFound = false;
 
@@ -117,18 +122,26 @@ document.addEventListener("DOMContentLoaded", function () {
           activeFound = true;
         }
 
-        // ✅ Special handling for last section (Contact)
+        // ✅ Ensure Contact activates at very bottom
         if (!activeFound && index === sections.length - 1 && scrollY > sectionTop) {
           links.forEach(link => link.classList.remove("active"));
           navLink?.classList.add("active");
         }
       });
 
-      // ✅ Highlight Home only when near top
+      // ✅ Highlight Home only near top
       if (window.scrollY < 100) {
         links.forEach(link => link.classList.remove("active"));
         document.querySelector('.navbar ul li a[href="index.html"]')?.classList.add("active");
       }
+    }
+
+    // 🔄 Run after load + resize + slight delay
+    window.addEventListener("load", () => {
+      updateSections();
+      setTimeout(handleScroll, 300); // ensures layout ready
     });
+    window.addEventListener("resize", updateSections);
+    window.addEventListener("scroll", handleScroll);
   }
 });
