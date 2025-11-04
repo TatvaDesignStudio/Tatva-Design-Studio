@@ -1,0 +1,151 @@
+/* ===== Light Theme Overrides ===== */
+
+:root {
+  --bg: #f0f2f4;     /* was #f9fafb — slightly softer gray */
+  --ink: #f6f7f8;     /* was #ffffff — less bright white */
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --gold: #bfa14a;
+  --line: rgba(0, 0, 0, 0.1);
+  --radius: 18px;
+  --shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Body */
+body {
+  background: linear-gradient(180deg, var(--bg), #e2e2e2 45%, var(--ink));
+  color: var(--text);
+}
+
+/* Header & Navbar */
+.site-header {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.navbar ul li a {
+  color: var(--text);
+}
+
+.navbar ul li a:hover {
+  color: var(--gold);
+}
+
+.navbar ul li a.active {
+  color: #bfa14a;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Hero / Section */
+section {
+  background: linear-gradient(180deg, var(--bg), #e2e2e2 45%, var(--ink));
+  color: var(--text);
+}
+
+.hero-inner h1{
+    color: white;
+}
+
+  /* ===== Hero ===== */
+  .bg-cover{
+    background-image: url('../images/Living_Room.jpg');
+    background-size:cover; background-repeat: no-repeat; background-position:center; position:relative; height: 700px;
+  }
+  .hero{ min-height:88vh; display:grid; place-items:center }
+  .hero .overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.45)) }
+  .hero-inner{ position:relative; text-align:center }
+  .hero-logo{ width:min(200px, 40vw); height:auto; margin-inline:auto 16px; border-radius:14px; box-shadow:var(--shadow) }
+  h1{ font-size:clamp(32px, 5vw, 56px); line-height:1.1; margin:14px 0 10px }
+  .lead{ color:#d1d5db; max-width:70ch; margin-inline:auto }
+  .cta-row{ display:flex; gap:12px; justify-content:center; margin-top:18px; flex-wrap:wrap }
+  .btn{ background:var(--gold); color:#101010; padding:12px 18px; border-radius:999px; font-weight:800; box-shadow:var(--shadow) }
+  .btn-outline{ background:transparent; color:var(--text); border:1px solid var(--gold) }
+
+
+/* Cards */
+#contact{
+    background: linear-gradient(180deg, var(--bg), #e2e2e2 45%, var(--ink));
+}
+.card, .contact-card {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.card h3, .contact-card h3 {
+  color: var(--text);
+}
+
+/* Pills / Labels */
+.pill {
+  color: var(--text);
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Contact section */
+.bg-contact {
+  background-color: #f9fafb;
+}
+
+/* Form Elements */
+#projectForm input,
+#projectForm textarea {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #ccc;
+}
+
+#projectForm input:focus,
+#projectForm textarea:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+#projectForm button {
+  background: #f3f3f3;
+  color: #111827;
+  border: 1px solid #ccc;
+}
+
+#projectForm button:hover {
+  background: #bfa14a;
+  color: #ffffff;
+}
+
+/* Modal */
+#startProjectBtn{
+    color: rgb(164, 153, 153);
+}
+
+.modal-content {
+  background: #ffffff;
+  color: #111827;
+  box-shadow: var(--shadow);
+}
+
+/* Footer */
+.site-footer {
+  background: #ffffff;
+  color: #111827;
+  border-top: 1px solid var(--line);
+}
+
+/* Links */
+a {
+  color: var(--gold);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Owner Card */
+.owner-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--text);
+}

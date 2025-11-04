@@ -49,3 +49,43 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Theme Change
+  const toggleBtn = document.getElementById('theme-toggle');
+  const themeIcon = toggleBtn.querySelector('.theme-icon');
+
+  // Load saved theme from localStorage
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'light') {
+    loadLightTheme();
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      unloadLightTheme();
+    } else {
+      loadLightTheme();
+    }
+  });
+
+  function loadLightTheme() {
+    if (!document.getElementById('light-theme')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'assets/css/light.css';
+      link.id = 'light-theme';
+      document.head.appendChild(link);
+    }
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeIcon.textContent = '🌙'; // Moon for dark mode next
+    localStorage.setItem('theme', 'light');
+  }
+
+  function unloadLightTheme() {
+    const link = document.getElementById('light-theme');
+    if (link) link.remove();
+    document.documentElement.removeAttribute('data-theme');
+    themeIcon.textContent = '🌞'; // Sun for light mode next
+    localStorage.setItem('theme', 'dark');
+  }
