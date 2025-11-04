@@ -51,10 +51,10 @@ body {
 .logo { height: 60px; margin-right: 15px;}
 .brand-link { display: flex; align-items: center; text-decoration: none; color: inherit;}
 .brand-link:hover {color: #bfa14a; /* hover effect same as navbar */}
-/* .brand-text h1 { font-size: 20px; margin-bottom: 0px;  line-height: 1.1;}
-.brand-text p { font-size: 14px; color: #666; margin-top: 10;} */
-.brand-text h1 {font-size: 20px; margin-bottom: 2px;}
-.brand-text p { font-size: 14px; color: #666;} 
+.brand-text h1 { font-size: 20px; margin-bottom: 0px;  line-height: 1.1;}
+.brand-text p { font-size: 14px; color: #666; margin-top: 10;}
+/* .brand-text h1 {font-size: 20px; margin-bottom: 2px;}
+.brand-text p { font-size: 14px; color: #666;}  */
 
 /* Navbar */
 .navbar ul {list-style: none; display: flex; gap: 20px;}
