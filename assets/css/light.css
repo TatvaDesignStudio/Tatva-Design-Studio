@@ -132,6 +132,16 @@ section {
   box-shadow: var(--shadow);
 }
 
+/* Close button */
+.close {
+position: absolute;
+top: 15px;
+right: 20px;
+font-size: 25px;
+cursor: pointer;
+color: black;
+}
+
 /* Footer */
 .site-footer {
   background: #ffffff;
