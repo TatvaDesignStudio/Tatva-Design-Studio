@@ -329,10 +329,11 @@ nav ul {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 14px 28px;
+  gap: 18px 32px; /* horizontal spacing helps create 2 rows neatly */
   margin: 0;
   padding: 0;
   list-style: none;
+  max-width: 500px; /* control width for 2-row layout */
 }
 
 nav a {
@@ -351,7 +352,7 @@ nav a {
   }
 
   .brand {
-    flex-direction: row;
+    flex-direction: row; /* keep logo and name side by side */
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -370,10 +371,8 @@ nav a {
   }
 
   nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px 26px;
-    max-width: 540px; /* helps create 2 neat rows */
+    max-width: 480px;
+    gap: 14px 28px;
   }
 
   nav a {
@@ -399,7 +398,7 @@ nav a {
   }
 
   .brand {
-    flex-direction: row; /* ✅ logo + firm name side by side */
+    flex-direction: row; /* ✅ keep logo and firm name in one row */
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -422,14 +421,13 @@ nav a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px 22px;
-    max-width: 420px; /* ✅ Forces 4 links in first row, 2 in second */
+    gap: 12px 30px; /* spacing tuned for 2 rows */
+    max-width: 400px; /* ensures 2-row layout */
   }
 
   nav a {
     font-size: 14px;
     padding: 6px 10px;
-    white-space: nowrap; /* prevents line breaks in long text like 'Architecture Projects' */
   }
 
   body {
@@ -440,7 +438,6 @@ nav a {
     padding: 10px 18px;
   }
 }
-
 
 
 /* Responsive for Contact grid */
