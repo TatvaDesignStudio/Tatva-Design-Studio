@@ -82,3 +82,53 @@ projectForm?.addEventListener("submit", async function (event) {
     formResponse.textContent = "⚠️ Network error. Please try again later.";
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll(".navbar ul li a");
+  const currentURL = window.location.href;
+
+  // Highlight current page (Architecture / Interior)
+  links.forEach(link => {
+    if (currentURL.includes(link.getAttribute("href")) && !link.getAttribute("href").startsWith("#")) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+
+  // Scroll-based highlighting (only for index.html)
+  if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+    const sections = document.querySelectorAll("section[id]");
+    const offset = 150; // header offset
+
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY + offset;
+      let activeFound = false;
+
+      sections.forEach((sec, index) => {
+        const sectionTop = sec.offsetTop;
+        const sectionHeight = sec.offsetHeight;
+        const sectionId = sec.getAttribute("id");
+        const navLink = document.querySelector(`.navbar ul li a[href="#${sectionId}"]`);
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          links.forEach(link => link.classList.remove("active"));
+          navLink?.classList.add("active");
+          activeFound = true;
+        }
+
+        // ✅ Special handling for last section (Contact)
+        if (!activeFound && index === sections.length - 1 && scrollY > sectionTop) {
+          links.forEach(link => link.classList.remove("active"));
+          navLink?.classList.add("active");
+        }
+      });
+
+      // ✅ Highlight Home only when near top
+      if (window.scrollY < 100) {
+        links.forEach(link => link.classList.remove("active"));
+        document.querySelector('.navbar ul li a[href="index.html"]')?.classList.add("active");
+      }
+    });
+  }
+});

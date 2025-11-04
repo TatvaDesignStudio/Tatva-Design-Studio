@@ -47,6 +47,12 @@ a{color:inherit; text-decoration:none}
 .navbar ul {list-style: none; display: flex; gap: 20px;}
 .navbar ul li { position: relative;}
 .navbar ul li a { text-decoration: none; color: #e5e7eb; font-weight: bold; transition: color 0.3s;} 
+/* Highlight active nav item */
+.navbar ul li a.active {
+  color: #bfa14a;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
 .navbar ul li a:hover {color: #bfa14a;}
 
 /* ===== Header / Nav ===== */
@@ -202,20 +208,96 @@ h1{ font-size:clamp(32px, 5vw, 56px); line-height:1.1; margin:14px 0 10px }
 
 
 /* ===== Contact ===== */
-#contact {padding: 40px; margin-top: 20px;}
-.bg-contact{ background-image: radial-gradient(90% 90% at 100% 0%, rgba(212,175,55,.14), transparent 60%) }
-.contact-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; margin-top:12px; padding-top: 50px; }
-.contact-card{ background:var(--card); border:1px solid var(--line); padding:18px; border-radius:16px; box-shadow:var(--shadow) }
-.owner-card{ border-color:rgba(212,175,55,.35) }
-.map-ph{ height:200px; border-radius:12px; border:2px dashed rgba(255,255,255,.2); display:grid; place-items:center; 
-  color:#cbd5e1; background:rgba(0,0,0,.25); transition: all 0.3s ease; cursor: pointer; text-decoration: none;}
-  .map-ph:hover {
+#contact {
+  padding: 40px;
+  margin-top: 20px;
+}
+
+.bg-contact {
+  background-image: radial-gradient(
+    80% 60% at 50% -10%,
+    rgba(212, 175, 55, 0.12),
+    transparent 60%
+  );
+  background-color: #0b0f19;
+}
+
+
+/* ✅ Reduced space between heading and grid */
+#contact h2.center {
+  margin-bottom: 16px;
+}
+
+/* ✅ 4 equal columns on desktop */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 0;
+  padding-top: 20px;
+  justify-items: center; /* centers cards evenly */
+}
+
+/* ✅ All content centered and cards equal height */
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  height: 7cm; /* fixed height */
+  padding: 24px 18px; /* balanced top/bottom padding */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
+  text-align: center;
+}
+
+.contact-card h3 {
+  margin: 0 0 10px 0;   /* balanced heading spacing */
+  font-weight: 600;
+}
+
+.contact-card p {
+  margin: 4px 0;        /* equal space above/below */
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+.owner-card {
+  border-color: rgba(212,175,55,.35);
+}
+
+/* ✅ Map box alignment same as others */
+.map-ph {
+  height: 200px;
+  width: 100%;
+  border-radius: 12px;
+  border: 2px dashed rgba(255,255,255,.2);
+  display: grid;
+  place-items: center;
+  color: #cbd5e1;
+  background: rgba(0,0,0,.25);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.map-ph:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
+
 iframe {
-  opacity: 0.6; /* adjust between 0 and 1 */
+  opacity: 0.6;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
 }
+
+
 /* ===== Footer ===== */
 .site-footer{border-top:1px solid var(--line); padding:26px 0; text-align: center;}
 
@@ -400,8 +482,7 @@ iframe {
   }
 }
 
-
-/* Responsive for Contact grid */
+/* Responsive Contact Grid */
 #contact {
   padding: 40px 20px;
   margin-top: 20px;
@@ -410,23 +491,58 @@ iframe {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(260px, 1fr));
   gap: 18px;
-  margin-top: 12px;
+  margin: 0 auto;
   padding-top: 50px;
-  justify-content: center; /* ensures equal space on both sides */
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1200px; /* keeps grid centered */
+  box-sizing: border-box;
 }
 
+/* Contact Card Styling */
+.contact-card {
+  background: rgba(20, 20, 30, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 300px; /* ✅ Fixed height for all cards */
+}
+
+/* Tablet View */
 @media (max-width: 1024px) {
   .contact-grid {
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 22px;
+    justify-content: center;
+  }
+
+  .contact-card {
+    height: 260px; /* slightly smaller for tablets */
   }
 }
 
+/* Mobile View */
 @media (max-width: 640px) {
   .contact-grid {
     grid-template-columns: 1fr;
-    justify-items: center;
+    gap: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 100%;
+    justify-items: center; /* ensures each card is centered */
+  }
+
+  .contact-card {
+    width: 100%;
+    max-width: 350px; /* balanced look on small screens */
+    height: 250px; /* balanced height for mobile */
   }
 }
