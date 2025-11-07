@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interior Projects - Tatva Design Studio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
     
@@ -26,12 +29,20 @@
             <li><a href="architecture.html">Architecture Projects</a></li>
             <li><a href="interior.html">Interior Projects</a></li>
             <li><a href="#contact">Contact</a></li>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-              <span class="theme-icon">🌞</span>
-            </button>
         </ul>
     </nav>
 </header>
+
+<div class="toggle-button">
+  <!-- 📸 Instagram Icon Button -->
+  <button class="insta-btn" aria-label="Visit Instagram" onclick="window.open('https://www.instagram.com/tatva_designstudio/', '_blank')">
+    <i class="fa-brands fa-instagram"></i>
+  </button>
+  <!-- 🌞 Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <span class="theme-icon">🌞</span>
+  </button>
+</div>
 
 
     <section class="page-intro">
@@ -67,24 +78,24 @@
     <div class="container">
       <h2 class="center">Contact</h2>
       <div class="contact-grid">
-        <div class="contact-card">
-          <h3>Studio Address</h3>
-          <p>Bhagrav Palace, <br/>Near Narayan baug, Kudale Baug,<br/>Sinhgad Road. Pune, Maharashtra.</p>
-        </div>
-        <div class="contact-card">
-          <h3>Phone</h3>
-          <p><a href="tel:+919699425961">+91 96994 25961</a></p>
-          <h3>Email</h3>
-          <p><a href="mailto:tatvadesignstudio@gmail.com">tatvadesignstudio61@gmail.com</a></p>
-        </div>
         <div class="contact-card owner-card">
-          <h3>Principal Architect</h3>
-          <p><strong>Ar. Riya Gandhi</strong></p>
-          <p class="muted">Founder & Design Head</p>
+          <h3>About Us</h3>
+          <p><strong>Tatva Design Studio</strong> was founded in Pune by <strong>Ar. Riya Gandhi</strong>, with a vision to craft spaces that blend aesthetics, functionality, and timeless design. 
+          We believe in designing spaces that reflect individuality, enhance lifestyle, and stand the test of time.</p>
+        </div>
+        <div class="contact-card">
+          <h3><span class="material-symbols-outlined" style="margin-bottom: 5px;">location_on</span> Studio Address :</h3>
+          <p>Tatva Design Studio,<br>Bhagrav Palace, <br/>Near Narayan baug, Kudale Baug,<br/>Sinhgad Road. Pune 411041, Maharashtra.</p>
+        </div>
+        <div class="contact-card">
+          <h3><span class="material-symbols-outlined">call</span> Phone :</h3>
+          <p><a href="tel:+919699425961">+91 96994 25961</a></p>
+          <h3><span class="material-symbols-outlined">mail</span> Email :</h3>
+          <p><a href="mailto:tatvadesignstudio@gmail.com">tatvadesignstudio61@gmail.com</a></p>
         </div>
         <div class="contact-card map-card">
           <h3>Find Us</h3>
-          <!-- <div class="map-ph">Map Placeholder</div> -->
+          <!-- <div class="map-ph" id="map-placeholder">Map Placeholder</div> -->
           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3424.7084407344423!2d73.8183902!3d18.4643524!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2954233de13cb%3A0x87e1f47070c57d8d!2sBhargav%20Palace%20D%2C%20Kudale%20Baug%2C%20Vadgaon%20Budruk%2C%20Pune%2C%20Maharashtra%20411041!5e1!3m2!1sen!2sin!4v1760600359897!5m2!1sen!2sin" 
             width="100%" 
             height="200" 
@@ -98,6 +109,7 @@
     </div>
   </section>
 
+  
   <footer class="site-footer">
     <div class="container foot">
       <div>© <span id="year"></span> Tatva Design Studio. All rights reserved.</div>
