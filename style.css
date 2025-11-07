@@ -418,7 +418,7 @@ a{color:inherit; text-decoration:none}
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 330px; /* ✅ Fixed height for all cards */
+  height: 300px; /* ✅ Fixed height for all cards */
 }
 
 /* Tablet View */
@@ -430,7 +430,7 @@ a{color:inherit; text-decoration:none}
   }
 
   .contact-card {
-    height: 320px; /* slightly smaller for tablets */
+    height: 265px; /* slightly smaller for tablets */
   }
 }
 
@@ -448,6 +448,6 @@ a{color:inherit; text-decoration:none}
   .contact-card {
     width: 100%;
     max-width: 350px; /* balanced look on small screens */
-    height: 320px; /* balanced height for mobile */
+    height: 265px; /* balanced height for mobile */
   }
 }
